@@ -2,10 +2,10 @@
 
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor
-import argparse
 from datetime import datetime
 from urllib.parse import urlparse, unquote
 import logging
+import zipfile
 
 from tqdm import tqdm
 import requests
@@ -24,11 +24,14 @@ agricultura_dir.mkdir(exist_ok=True)
 hidricos_dir = RAW_DIR / "hidricos"
 hidricos_dir.mkdir(exist_ok=True)
 
+mpios_dir = RAW_DIR / "mpios"
+mpios_dir.mkdir(exist_ok=True)
+
 # urls
-datasets = {
-    'agricultura': r"https://datos.sonora.gob.mx/dataset/Agricultura%20Sonora",
-    'hidricos': r"https://datos.sonora.gob.mx/dataset/Recursos%20H%C3%ADdricos"
-}
+agricultura_url= r"https://datos.sonora.gob.mx/dataset/Agricultura%20Sonora"
+hidricos_url = r"https://datos.sonora.gob.mx/dataset/Recursos%20H%C3%ADdricos"
+municipios_url = r"https://www.inegi.org.mx/contenidos/productos/prod_serv/contenidos/espanol/bvinegi/productos/geografia/marcogeo/794551132173/26_sonora.zip" 
+
 
 def get_download_urls(url):
     r = requests.get(url)
@@ -98,20 +101,41 @@ def download_files_concurrently(urls, dest_dir, max_workers=5):
     return downloaded_files
 
 
+def unzip_file(zip_path, output_path=None):
+    if not output_path:
+        output_path = zip_path.parent / zip_path.stem
+
+    try:
+        with zipfile.ZipFile(zip_path, 'r') as zf:
+            zf.extractall(path=output_path)
+        return output_path
+
+    except zipfile.BadZipFile:
+        logger.exception(f'ZIP corrupto: {zip_path}')
+        raise
+
+
 def extract_data():
     start = datetime.now()
     logger.info("Iniciando extracción de datos...")
     try:
-        paths = {}
-        for name, url in datasets.items():
-            urls = get_download_urls(url)
-            paths[name] = download_files_concurrently(urls, RAW_DIR / name)
+        agricultura_urls = get_download_urls(agricultura_url)
+        agricultura_path = download_files_concurrently(agricultura_urls, agricultura_dir)
+        
+        hidricos_urls = get_download_urls(hidricos_url)
+        hidricos_path = download_files_concurrently(hidricos_urls, agricultura_dir)
 
+        mpios_zip = download_file(municipios_url, mpios_dir)
+        mpios_path = unzip_file(mpios_zip, )
 
         elapsed = (datetime.now() - start).total_seconds()
         logger.info(f'Extracción completada en {elapsed:.2f} s')
         
-        return paths
+        return {
+            'agricultura': agricultura_path, 
+            'hidricos': hidricos_path, 
+            'mpios': mpios_path
+        }
 
     except Exception:
         logger.exception("Fallo durante la extracción")
