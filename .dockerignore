@@ -1,25 +1,27 @@
+# Python cache
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
+
+# Databases
 *.db
 *.duckdb
 
-# carpetas que NO deben ir dentro del contenedor
+# Ignore data content but keep folder
 data/*
-!data/
+!data/.gitkeep
 
+# Ignore local logs but keep folder
+log/*
+!log/.gitkeep
 
-# virtual environments
+# Ignore virtual envs
 .env/
 .venv/
 
-# logs locales
-log/*.log
-
-# git
+# Git metadata
 .git/
-.gitignore
 
-# OS
+# OS files
 .DS_Store
