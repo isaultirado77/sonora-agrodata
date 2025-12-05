@@ -1,4 +1,5 @@
 # Agricultura y Agua en Sonora: un vistazo a más de dos décadas de datos
+
 Cuando se habla de agricultura en Sonora, casi siempre pensamos en trigo, maíz, uva, espárrago o papa. Pero detrás de esos cultivos hay algo igual de importante: el agua. En un estado donde el clima es seco por naturaleza, entender cómo cambian los cultivos y cómo cambia el agua no es un lujo técnico, es una necesidad básica.
 
 En este análisis exploré datos agrícolas de 1999 a 2021 y datos de almacenamiento de presas desde 1999. El objetivo no era construir un modelo complejo, sino algo mucho más sencillo (y a veces más valioso): **mirar los datos  y entender la historia que cuentan**.
@@ -8,6 +9,7 @@ En este análisis exploré datos agrícolas de 1999 a 2021 y datos de almacenami
 ## ¿Cómo ha evolucionado la superficie sembrada y cosechada?
 
 ![Superficie Sembrada vs Cosechada 1999-2021](../plots/superficie_sembrada_cosechada.png)
+
 La superficie sembrada y cosechada es el pulso de la actividad agrícola. Representa cuánto se planea sembrar y cuánto se logra cosechar realmente. En Sonora, ambas variables muestran un comportamiento estable a lo largo del tiempo, pero con ciclos muy marcados.
 
 Entre 1999 y 2021, la superficie sembrada creció suavemente, alcanzando su punto más alto alrededor de 2016. Después vino un descenso importante en 2020, uno de los años más secos recientes. Lo interesante es que la superficie cosechada sigue prácticamente el mismo patrón: cuando la siembra sube, la cosecha también; cuando cae, ambas caen.
@@ -29,7 +31,9 @@ La **alfalfa**, por su parte, ocupa un papel equilibrado: superficie considerabl
 
 Este contraste revela la estructura dual de la agricultura sonorense:
 **grandes extensiones dedicadas a cultivos extensivos**, y **bloques compactos de cultivos intensivos con altísima rentabilidad**.
+
 ---
+
 ## ¿Qué cultivos han crecido y cuáles han disminuido?
 
 Para ver qué cultivos están creciendo de verdad, tomé la superficie sembrada en 1999 y la comparé con 2021. Las diferencias son fuertes y reveladoras.
@@ -51,7 +55,9 @@ Sorgo y garbanzo también presentan descensos, aunque más moderados.
 
 La conclusión es clara:
 **la agricultura sonorense ha estado en transformación**, alejándose de algunos cultivos tradicionales y moviéndose hacia productos de mayor valor.
+
 ## ¿Y qué pasa con el agua?
+
 ![Disponibilidad de agua vs Superficie sembrada](../plots/disponibilidad_agua_sup_sembrada.png)
 
 El sistema hídrico de Sonora es el reflejo más puro del clima en el estado. Desde 1999, el almacenamiento en presas ha mostrado ciclos intensos de altibajos: años húmedos, años secos, recuperaciones, caídas abruptas.
