@@ -4,6 +4,7 @@ Cuando se habla de agricultura en Sonora, casi siempre pensamos en trigo, maíz,
 En este análisis exploré datos agrícolas de 1999 a 2021 y datos de almacenamiento de presas desde 1999. El objetivo no era construir un modelo complejo, sino algo mucho más sencillo (y a veces más valioso): **mirar los datos  y entender la historia que cuentan**.
 
 ---
+
 ## ¿Cómo ha evolucionado la superficie sembrada y cosechada?
 
 ![Superficie Sembrada vs Cosechada 1999-2021](../plots/superficie_sembrada_cosechada.png)
@@ -16,6 +17,7 @@ Hay años donde la diferencia entre sembrado y cosechado se abre más de lo norm
 La evolución no es caótica. Por el contrario, sigue una lógica muy simple: **años húmedos &rarr; expansión agrícola**, **años secos &rarr; contracción**.
 
 ---
+
 ## ¿Qué cultivos son los más importantes?
 
 ![Comparación de Superficie, Producción y Valor por Cultivo (Top 10)](../plots/top_cultivos.png)
@@ -59,7 +61,9 @@ Los periodos secos más fuertes en el registro reciente —2002 a 2004 y 2019 a 
 No hace falta un modelo complicado para ver la relación: la agricultura de Sonora y el agua caminan juntas.
 
 La disponibilidad de agua no solo influye en cuánto se siembra, sino también en **qué cultivos crecen o retroceden**. Los cultivos de alto valor que requieren manejo más preciso parecen adaptarse mejor; los extensivos, como algodón y cártamo, no tanto.
+
 ---
+
 ## Conclusiones
 
 * La actividad agrícola de Sonora se mantiene estable a largo plazo, pero reacciona rápidamente a los ciclos de agua.
